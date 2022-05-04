@@ -13,29 +13,35 @@ class TableViewController: UITableViewController {
     private var storageName: [String] = []
     private var storageNumbers: [String:String] = [:]
     
+    // Creating a phone book
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        for i in 0...29 {
+            let name: String = (firstName() + " " + secondName())
+            let number = randomeNumber()
+            storageName.insert(name, at: i)
+            storageNumbers[name] = number
+        }
+    }
+    
     
     // MARK: - Table view data source
 
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        return 30
     }
 
     // MARK: Assingning a value to the cells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "startVC", for: indexPath)
         
-        let name: String = (firstName() + " " + secondName())
-        let number = randomeNumber()
-        cell.textLabel?.text = name
-        
-        storageName.insert(name, at: indexPath.row)
-        storageNumbers[name] = number
-    
+        cell.textLabel?.text = storageName[indexPath.row]
+        cell.accessoryType = .disclosureIndicator
         
         return cell
     }

@@ -9,16 +9,17 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    
+    // MARK: Portable data
     var info: String?
     var infoNumber: [String: String]?
     
+    // Outlets
     @IBOutlet var nameLable: UILabel!
     @IBOutlet var emailLable: UILabel!
     @IBOutlet var phoneLableNew: UILabel!
 
     
-    
+   // Display info
     override func viewDidLoad() {
         super.viewDidLoad()
         
