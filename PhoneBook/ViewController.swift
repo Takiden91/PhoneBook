@@ -10,8 +10,8 @@ import UIKit
 class ViewController: UIViewController {
 
     // MARK: Portable data
-    var info: String?
-    var infoNumber: [String: String]?
+
+    var infoPerson: Person?
     
     // Outlets
     @IBOutlet var nameLable: UILabel!
@@ -23,23 +23,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        nameLable.text = info
-        
-        var email: String = ""
-        
-        for i in info! {
-            if i != " " {
-                email += i.lowercased()
-                
-            }
-        }
-        
-        emailLable.text = email + "@mail.ruru"
-        
-        phoneLableNew.text = infoNumber![info!]
-        
+        nameLable.text = (infoPerson?.name ?? "No Name") + " " + (infoPerson?.surname ?? "No surname")
+        emailLable.text = infoPerson?.email ?? "No email"
+        phoneLableNew.text = infoPerson?.phoneNumber ?? "No number"
     }
-    
-    
-
 }
